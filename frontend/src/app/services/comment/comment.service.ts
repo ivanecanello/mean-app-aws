@@ -8,7 +8,7 @@ import {catchError, Observable, throwError} from 'rxjs';
 export class CommentService {
 
   //baseUri: string = 'http://localhost:4000/comments';
-  baseUri: string = '/api';
+  baseUri: string = '/api/';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private _http: HttpClient) {}
@@ -21,7 +21,7 @@ export class CommentService {
 
   updateComment(id: number, data: any): Observable<any> {
     return this._http
-      .put(`${this.baseUri}/${id}`, data, { headers: this.headers })
+      .put(`${this.baseUri}${id}/`, data, { headers: this.headers })
       .pipe(catchError(this.errorMgmt));
   }
 
@@ -31,19 +31,19 @@ export class CommentService {
 
   getCommentListById(id: number): Observable<any> {
     return this._http
-      .get(`${this.baseUri}/${id}`, { headers: this.headers })
+      .get(`${this.baseUri}${id}/`, { headers: this.headers })
       .pipe(catchError(this.errorMgmt));
   }
 
   getCommentListByFlightId(flightId: number): Observable<any> {
     return this._http
-      .get(`${this.baseUri}/byflightid/${flightId}`, { headers: this.headers })
+      .get(`${this.baseUri}byflightid/${flightId}/`, { headers: this.headers })
       .pipe(catchError(this.errorMgmt));
   }
 
   deleteComment(id: number): Observable<any> {
     return this._http
-      .delete(`${this.baseUri}/${id}`, { headers: this.headers })
+      .delete(`${this.baseUri}${id}/`, { headers: this.headers })
       .pipe(catchError(this.errorMgmt));
   }
 
