@@ -8,7 +8,7 @@ import {catchError, Observable, throwError} from 'rxjs';
 export class CommentService {
 
   //baseUri: string = 'http://localhost:4000/comments';
-  baseUri: string = '/api/comments';
+  baseUri: string = '/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private _http: HttpClient) {}

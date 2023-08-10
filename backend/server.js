@@ -23,7 +23,7 @@ app.use(
   }),
 )
 app.use(cors())
-app.use('/comments/', commentRoute)
+app.use('/', commentRoute)
 
 // Create port
 const port = process.env.PORT || 4000
