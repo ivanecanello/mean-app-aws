@@ -1,0 +1,39 @@
+<div mat-dialog-title>
+  <h1>Please leave your comment here</h1>
+</div>
+<form [formGroup]="commentForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Comment</mat-label>
+        <textarea matInput type="text" placeholder="..." formControlName="comment"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="example-chip-list">
+        <mat-label>Tags</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Enter fruits">
+          <mat-chip-row *ngFor="let tag of tags"
+                        (removed)="remove(tag)"
+                        [editable]="true"
+                        (edited)="edit(tag, $event)">
+            {{tag}}
+            <button matChipRemove [attr.aria-label]="'remove ' + tag">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+          <input placeholder="Add tag"
+                 [matChipInputFor]="chipGrid"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)"/>
+        </mat-chip-grid>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="!this.commentForm.valid" type="submit">{{existingComment ? 'Update' : 'Save'}}</button>
+  </div>
+</form>

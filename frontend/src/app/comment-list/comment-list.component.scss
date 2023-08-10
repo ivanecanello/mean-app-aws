@@ -1,0 +1,29 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.filter-row {
+  display: flex;
+  padding-top: 30px;
+}
+
+.no-comments {
+  padding: 15px;
+}
+
+.flight-title {
+  margin: 5px;
+  font-size: xx-large;
+
+  &-bold {
+    font-weight: bold;
+  }
+}
+
+.column-df {
+  display: flex;
+}
+
+.mat-column-action {
+  width: 130px;
+}

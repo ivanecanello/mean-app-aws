@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <div class="row toolbar-mw">
+    <span class="ml-30">MEAN Stack - Full Stack Test</span>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-mw">
+  <mat-sidenav fixedInViewport="true" mode="side" opened class="mat-elevation-z8 sidenav">
+    <ng-container *ngFor="let flight of flights">
+      <button mat-button class="menu-button" (click)="changeSelectedFlight(flight)"
+              [ngClass]="{'flight-active': selectedFlight.id === flight.id}">
+        <mat-icon>flight</mat-icon>
+        <span>Flight {{flight.name}}</span>
+      </button>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <div class="main-body">
+        <app-comment-list *ngIf="selectedFlight" [currentFlight]="selectedFlight"></app-comment-list>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
