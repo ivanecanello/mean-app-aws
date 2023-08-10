@@ -70,7 +70,7 @@ export class CommentListComponent implements OnInit {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.dataSource.filterPredicate = (data: any, filter: string) => {
-          return data.comment.includes(filter);
+          return data.comment.toLowerCase().includes(filter.toLowerCase());
         };
       },
       error: console.log,
